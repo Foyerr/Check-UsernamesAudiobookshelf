@@ -1,15 +1,21 @@
-# List of usernames to test
+param (
+    [Parameter(Mandatory=$true)]
+    [string]$Ip,              
+    [string]$Username            
+)
+
+
+
 $usernames = @("admin", "user3", "john", "jane", "user1", "guest", "root","user2")
+$usernames += $username
 
 # Target URL
-$url = "http://192.168.x.x/login"
+$url = "http://$($Ip)/login"
 
 # Static password used in the body
 $password = "abcdefghijklmnopqrstuvwxyz"
 
-# Headers (update the Authorization token if needed)
 $headers = @{
-    "Authorization" = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
     "Content-Type"  = "application/json"
     "Accept"        = "application/json, text/plain, */*"
 }
